@@ -21,7 +21,7 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function(){
     navigator.serviceWorker.register('./sw.js').then(function(swRef){
-      console.log('[Service Worker] Registration succeeded. Scope is ' + reg.scope);
+      console.log('[Service Worker] Registration succeeded. Scope is ' + swRef.scope);
         if ('Notification' in window) {
           console.log('Notification permission default status:', Notification.permission);
           Notification.requestPermission(function (status) {
