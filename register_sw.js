@@ -9,9 +9,9 @@ if ('serviceWorker' in navigator) {
           console.log('Notification permission status:', status);
           //displayNotification();
         });
-
-        subscribeUser(reg);
       }
+      subscribeUser(reg);
+
     }).catch(error => {
       // registration failed
       console.log('[Service Worker] Registration failed with ' + error);
