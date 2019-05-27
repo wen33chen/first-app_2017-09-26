@@ -1,22 +1,40 @@
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js')
-    .then(reg => {
-      // registration worked
-      console.log('[Service Worker] Registration succeeded. Scope is ' + reg.scope);
-      if ('Notification' in window) {
-        console.log('Notification permission default status:', Notification.permission);
-        Notification.requestPermission(function (status) {
-          console.log('Notification permission status:', status);
-          //displayNotification();
-        });
-      }
-      subscribeUser(reg);
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('./sw.js')
+//     .then(reg => {
+//       // registration worked
+//       console.log('[Service Worker] Registration succeeded. Scope is ' + reg.scope);
+//       if ('Notification' in window) {
+//         console.log('Notification permission default status:', Notification.permission);
+//         Notification.requestPermission(function (status) {
+//           console.log('Notification permission status:', status);
+//           //displayNotification();
+//         });
+//       }
+//       subscribeUser(reg);
 
-    }).catch(error => {
-      // registration failed
-      console.log('[Service Worker] Registration failed with ' + error);
+//     }).catch(error => {
+//       // registration failed
+//       console.log('[Service Worker] Registration failed with ' + error);
+//     });
+//   }
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('./sw.js').then(function(swRef){
+      console.log('[Service Worker] Registration succeeded. Scope is ' + reg.scope);
+        if ('Notification' in window) {
+          console.log('Notification permission default status:', Notification.permission);
+          Notification.requestPermission(function (status) {
+            console.log('Notification permission status:', status);
+            //displayNotification();
+          });
+        }
+        subscribeUser(swRef);
     });
-  }
+  });
+}else{
+  console.warn('Push messaing is not supported');
+}
 
 
   function displayNotification() {
