@@ -24,11 +24,42 @@
   <link rel="apple-touch-icon" href="/assets/images/android_152.png" sizes="152x152">
   <link rel="apple-touch-icon" href="/assets/images/android_167.png" sizes="167x167">
   <link rel="apple-touch-icon" href="/assets/images/android_180.png" sizes="180x180">
+  <script type='text/javascript'>
+    //some default pre init
+    var Countly = Countly || {};
+    Countly.q = Countly.q || [];
+
+    //provide countly initialization parameters
+    Countly.app_key = '9ea42de0e63f68d8d46db13374d57b2c2fd9e6ac';
+    Countly.url = 'https://asia-try.count.ly';
+
+    Countly.q.push(['track_sessions']);
+    Countly.q.push(['track_pageview']);
+    Countly.q.push(['track_clicks']);
+    Countly.q.push(['track_scrolls']);
+    Countly.q.push(['track_errors']);
+    Countly.q.push(['track_links']);
+    Countly.q.push(['track_forms']);
+    Countly.q.push(['collect_from_forms']);
+
+    //load countly script asynchronously
+    (function() {
+       var cly = document.createElement('script'); cly.type = 'text/javascript';
+       cly.async = true;
+       //enter url of script here
+       cly.src = 'https://asia-try.count.ly/sdk/web/countly.min.js';
+       cly.onload = function(){Countly.init()};
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cly, s);
+    })();
+    </script>
 </head>
 
 <body oncontextmenu="return false">
   <app-root></app-root>
   <script type="text/javascript" src="register_sw.js"></script>
+  <script> window._peq = window._peq || []; window._peq.push(["init"]); </script>
+  <script src="https://clientcdn.pushengage.com/core/a2eded68b25488953ce8729ba9307bb5.js" async></script>
+  <noscript><img src='https://asia-try.count.ly/pixel.png?app_key=9ea42de0e63f68d8d46db13374d57b2c2fd9e6ac&begin_session=1'/></noscript>
 </body>
 
 </html>
